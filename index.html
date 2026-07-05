@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Discovery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero__content">
+          <p class="eyebrow">Curated stays • Live API</p>
+          <h1>Find your ideal stay in India</h1>
+          <p>
+            Discover premium hotels, compare prices, and explore rich details from a live
+            hotel API designed for a modern booking experience.
+          </p>
+          <div class="hero__stats">
+            <div>
+              <strong id="hotel-count">0</strong>
+              <span>Hotels</span>
+            </div>
+            <div>
+              <strong id="city-count">0</strong>
+              <span>Cities</span>
+            </div>
+            <div>
+              <strong id="top-rating">0</strong>
+              <span>Top Rating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__panel">
+          <form id="filters-form" class="filters" autocomplete="off">
+            <label>
+              <span>Search</span>
+              <input id="search-input" type="text" placeholder="Try hotel or city" />
+            </label>
+
+            <label>
+              <span>Location</span>
+              <select id="location-filter">
+                <option value="">All locations</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Sort by</span>
+              <select id="sort-select">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rating</option>
+              </select>
+            </label>
+
+            <button type="button" id="clear-filters" class="secondary-btn">Clear</button>
+          </form>
+        </div>
+      </header>
+
+      <main>
+        <section class="section-header">
+          <div>
+            <h2>Featured stays</h2>
+            <p id="results-summary">Loading hotels from the live API...</p>
+          </div>
+          <div class="chip-row">
+            <span class="chip">Luxury</span>
+            <span class="chip">Budget-friendly</span>
+            <span class="chip">Rated highly</span>
+          </div>
+        </section>
+
+        <div id="status-message" class="status-message">Connecting to hotel service…</div>
+        <section id="hotel-grid" class="hotel-grid" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <div id="hotel-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal__card">
+        <button id="close-modal" class="modal__close" aria-label="Close details">×</button>
+        <img id="modal-image" class="modal__image" alt="Hotel preview" />
+        <div class="modal__content">
+          <p id="modal-location" class="eyebrow"></p>
+          <h3 id="modal-title"></h3>
+          <div class="modal__meta">
+            <span id="modal-rating"></span>
+            <span id="modal-price"></span>
+          </div>
+          <p id="modal-description" class="modal__description"></p>
+          <div id="modal-gallery" class="modal__gallery"></div>
+          <button class="primary-btn" type="button">Reserve now</button>
+        </div>
+      </div>
+    </div>
+    <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
